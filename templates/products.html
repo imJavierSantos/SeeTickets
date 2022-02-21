@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online store</title>
+</head>
+<body>
+    <div class="content">
+        <div>
+            {% for row in data %}
+                <tr>
+                    <td><p>Product. {{row[0]['name']}}</p></td>
+                    <td><p>Price. {{row[1]['value']}}</p></td>
+                </tr>
+                <form action="{{ url_for('submit_products') }}" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="price" value='{{row[1]['value']}}' />
+                    <input type="submit" id="send-signup" name="signup" value="Add" />
+                </form>
+                <hr>
+            {% endfor %}
+        </div>
+        <div>
+            {% if fee is defined%}
+                <p>Total service fee {{ fee }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
