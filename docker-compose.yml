@@ -1,9 +1,17 @@
 version: '3.7'
 services:
     postgres:
+        container_name: 'postgres'
         image: postgres:10.5
         environment:
           - POSTGRES_USER=postgres
           - POSTGRES_PASSWORD=postgres
         ports:
-          - '5438:5432'
+          - '5433:5432'
+    app:
+      build: .
+      image: flask_docker
+      ports:
+        - '5001:5000'
+      depends_on:
+        - postgres

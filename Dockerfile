@@ -1,6 +1,6 @@
-FROM python:3.6-alpine
-ADD . /
-WORKDIR /
-RUN /usr/local/bin/python -m pip install --upgrade pip
+FROM python:3.8-slim-buster
+WORKDIR /app
+COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
-CMD python app.py
+COPY . .
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

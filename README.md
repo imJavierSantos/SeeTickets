@@ -1,12 +1,20 @@
 # See Tickets
 
 ## How to run the app
-You should run the postgres database with the docker compose.
+You should run the app and the database with the docker compose.
 ```
-docker-compose up -d
+docker-compose build
+docker-compose up
 ```
-Then run the scripts to create the schema and insert data. (The scripts are in file "scripts.sql")
+
+You should run this script to create the database and insert the data
+```
+cat ./scripts.sql | docker exec -i postgres psql -U postgres
+```
 
 After this, you are ready tu run the flask app.
 
-http://127.0.0.1:5000/
+http://localhost:5001/
+
+
+

@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, MetaData, ForeignKey
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Column, Integer, String, Float
 
-engine = create_engine('postgresql://postgres:postgres@localhost:5438/postgres')
+engine = create_engine('postgresql://postgres:postgres@postgres:5432/postgres')
 Base = declarative_base(metadata=MetaData(schema='see_tickets'))
 
 
